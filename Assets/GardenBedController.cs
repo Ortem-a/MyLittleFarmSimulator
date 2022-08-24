@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GardenBedController : MonoBehaviour
+public class GardenBedController : Player
 {
-    public GameObject Player;
-
     // заросшее травой место -> место без травы ->    грядка сделана -> растение посажено -> урожай
     // (можно косить)          (можно сделать грядку) (можно засадить)                       (можно собрать)
 
@@ -28,7 +26,7 @@ public class GardenBedController : MonoBehaviour
         _isHaveNoGardenBed = true;
         _canPlant = false;
         _isFree = true;
-
+        
         currentPrefab = Instantiate(OverGrownGardenBedPrefab, transform);
     }
 
