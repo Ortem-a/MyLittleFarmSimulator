@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -12,10 +10,5 @@ public class Player : MonoBehaviour
     {
         instance = this;
         ItemInHands = null;
-    }
-
-    public void UpdateHands(GameObject tool)
-    {
-        ItemInHands = Instantiate(tool, transform);
     }
 }

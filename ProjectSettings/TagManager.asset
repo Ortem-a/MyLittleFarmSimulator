@@ -7,6 +7,8 @@ TagManager:
   - Hammer
   - Sickle
   - Shovel
+  - GardenBed
+  - Stack
   layers:
   - Default
   - TransparentFX

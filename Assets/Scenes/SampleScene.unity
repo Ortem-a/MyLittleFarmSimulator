@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 573334175}
   m_Layer: 0
   m_Name: GardenBedPlace
-  m_TagString: Untagged
+  m_TagString: GardenBed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,6 +660,7 @@ MonoBehaviour:
   OverGrownGardenBedPrefab: {fileID: 7784295729509720572, guid: fe9f6df8cda764a4b8a5bbd1cfc5b3f2, type: 3}
   CleanedGardenBedPrefab: {fileID: 2723137698965453274, guid: f11cdfc13dfa1e94f91d76fee8fccc03, type: 3}
   FreeGardenBedPrefab: {fileID: 6552983919294353196, guid: 7e0f340893fe4fe40b25523e7d106583, type: 3}
+  StackPrefab: {fileID: 4049511496574159, guid: 0306908b5406ad94d8e43e157a3388b6, type: 3}
 --- !u!4 &573334177
 Transform:
   m_ObjectHideFlags: 0
@@ -1689,6 +1690,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4732180844303294695, guid: faa976de5e03fa548b1910832f993049, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732180844303294695, guid: faa976de5e03fa548b1910832f993049, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
