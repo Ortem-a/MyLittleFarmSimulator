@@ -53,7 +53,8 @@ public class ShelterController : Player
             PutToolInPlace(instance.ItemInHands.tag);
         }
         Debug.Log($"TOOL TAKEN { tool.tag }");
-        instance.ItemInHands = Instantiate(tool, instance.transform); // взять инструмент       
+        instance.ItemInHands = Instantiate(tool, instance.transform); // взять инструмент
+        instance.ItemInHands.transform.position += new Vector3(-1f, 0.5f, 1f);
         UpdateToolButton(tool.tag); // убрать инструмент из сарая
     }
 
@@ -116,6 +117,6 @@ public class ShelterController : Player
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(transform.position + new Vector3(7.5f, 0, 0), GetComponent<BoxCollider>().size * 10);
+        Gizmos.DrawWireCube(transform.position + new Vector3(6f, 0, 0), GetComponent<BoxCollider>().size);
     }
 }

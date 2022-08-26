@@ -60,7 +60,9 @@ public class GardenBedController : Player
                 {
                     Debug.Log($"PLANT smth IN {this.name}");
 
+                    GetComponentInChildren<PlantGrownController>().ChangePlantState(); // посадить
 
+                    _canPlant = false; // уже что-то растет
                 }
             }
         }
@@ -77,7 +79,7 @@ public class GardenBedController : Player
     {
         // вылетает стог сена
         _stack = Instantiate(StackPrefab, transform);
-        _stack.transform.position = transform.position + new Vector3(2, 0, 1);
+        _stack.transform.position = transform.position + new Vector3(2, 0, -4);
         _stack.transform.rotation = Quaternion.Euler(-90, 0, 0);
     }
 

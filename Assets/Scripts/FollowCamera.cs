@@ -10,6 +10,8 @@ public class FollowCamera : MonoBehaviour
     public float offsetZ;
     [Range(0f, 90f)]
     public float rotationX;
+    [Range(-90f, 90f)]
+    public float rotationY;
 
     private Vector3 offset;
 
@@ -18,7 +20,7 @@ public class FollowCamera : MonoBehaviour
         offset = new Vector3(0, offsetY, offsetZ);
 
         transform.position = player.transform.position + offset;
-        transform.Rotate(new Vector3(rotationX, 0, 0));
+        transform.Rotate(new Vector3(rotationX, rotationY, 0));
     }
 
     void LateUpdate()
