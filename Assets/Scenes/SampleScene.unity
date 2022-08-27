@@ -10521,8 +10521,8 @@ MonoBehaviour:
   PlantsCount: 0
   PlantPrefabs:
   - {fileID: 1740484373510866014, guid: 278df919d1ff5794695d81325e0e1144, type: 3}
-  - {fileID: 5615908967042506121, guid: 12dc5f6b514a3204ca9097ca19755e49, type: 3}
-  - {fileID: 457436987671056679, guid: 9966b76de45e3c54d98a7d847a4845c0, type: 3}
+  - {fileID: 2003963041842973562, guid: c33723f462c50a5408c5b578f198e315, type: 3}
+  - {fileID: 8953062489212638539, guid: 8a99a1091742d424a873e8e53f6771d0, type: 3}
   TimeOfGrown: 5
 --- !u!1001 &1330418867
 PrefabInstance:
