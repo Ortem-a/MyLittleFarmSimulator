@@ -75,6 +75,8 @@ public class GardenBedController : Player
                 Debug.Log("TRY TO TAKE READY PLANT");
 
                 GetComponentInChildren<PlantGrownController>().TakeReadyPlant();
+                instance.AddPlant(); // Update UI
+                _isReady = false;
             }
         }
     }
@@ -100,6 +102,7 @@ public class GardenBedController : Player
         _stack = Instantiate(StackPrefab, transform);
         _stack.transform.position = transform.position + new Vector3(2, 0, -4);
         _stack.transform.rotation = Quaternion.Euler(-90, 0, 0);
+        _stack.tag = "Stack";
     }
 
     public void TakeStackToPlayer()
@@ -115,7 +118,8 @@ public class GardenBedController : Player
             else // руки свободны
             {
                 Debug.LogWarning("TAKE STACK TO PLAYER");
-                instance.ItemInHands = _stack;
+
+                //instance.ItemInHands = _stack;
                 Destroy(_stack);
             }
         }
