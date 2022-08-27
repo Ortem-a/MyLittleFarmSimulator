@@ -35,7 +35,14 @@ public class GameManager : Player
     private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(3f);
+        
+        ToMainMenu();
+    }
+
+    public void ToMainMenu()
+    {
         SceneManager.LoadScene("MainMenu");
+        SceneManager.UnloadScene("SampleScene");
     }
 
     private void OnDrawGizmos()
