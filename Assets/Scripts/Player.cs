@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     {
         instance = this;
         ItemInHands = null;
-        PlantsCount = 0;
+        PlantsCount = 3;
     }
 
     public void AddPlant()

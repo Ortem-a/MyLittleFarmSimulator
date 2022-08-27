@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Player
 {
+    public GameObject StartUI;
     public GameObject FinishUI;
     public GameObject NotReadyYetUI;
     public GameObject HintsUI;
 
     private void Awake()
     {
+        StartUI.SetActive(true);
         FinishUI.SetActive(false);
         NotReadyYetUI.SetActive(false);
         HintsUI.SetActive(false);
@@ -20,6 +22,10 @@ public class GameManager : Player
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ToMainMenu();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            HintsOn();
         }
     }
 
@@ -61,6 +67,11 @@ public class GameManager : Player
     public void HintsOff()
     {
         HintsUI.SetActive(false);
+    }
+
+    public void StartUIOff()
+    {
+        StartUI.SetActive(false);
     }
 
     private void OnDrawGizmos()
