@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GardenBedController : Player
@@ -61,11 +62,29 @@ public class GardenBedController : Player
                     Debug.Log($"PLANT smth IN {this.name}");
 
                     GetComponentInChildren<PlantGrownController>().ChangePlantState(); // посадить
-
                     _canPlant = false; // уже что-то растет
+                    StartCoroutine(WaitUntilGrown());
+                }
+                else if (_isReady)
+                {
+                    Debug.LogWarning($"HANDS ARE BUSY BY {instance.ItemInHands.name}");
                 }
             }
+            else if (_isReady) // урожай готов к сборке
+            {
+                Debug.Log("TRY TO TAKE READY PLANT");
+
+                GetComponentInChildren<PlantGrownController>().TakeReadyPlant();
+            }
         }
+    }
+
+    private IEnumerator WaitUntilGrown()
+    {
+        yield return new WaitForSeconds(GetComponentInChildren<PlantGrownController>().TimeOfGrown * 2);
+
+        _isReady = true;
+        Debug.Log($"PLANT IS READY {_isReady}");
     }
 
     private void UpdatePrefab(GameObject newPrefab)
