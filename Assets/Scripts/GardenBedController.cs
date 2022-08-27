@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GardenBedController : Player
 {
@@ -7,10 +8,11 @@ public class GardenBedController : Player
     // (можно косить)          (можно сделать грядку) (можно засадить)                       (можно собрать)
     // (вылетает стог сена)
 
-    [SerializeField] private GameObject OverGrownGardenBedPrefab; // префаб заросшей грядки
-    [SerializeField] private GameObject CleanedGardenBedPrefab; // префаб не заросшей грядки
-    [SerializeField] private GameObject FreeGardenBedPrefab; // префаб не засаженной грядки
-    [SerializeField] private GameObject StackPrefab; // префаб снопа сена
+    public GameObject OverGrownGardenBedPrefab; // префаб заросшей грядки
+    public GameObject CleanedGardenBedPrefab; // префаб не заросшей грядки
+    public GameObject FreeGardenBedPrefab; // префаб не засаженной грядки
+    public GameObject StackPrefab; // префаб снопа сена
+    public GameObject Hint; // подсказки пользователю
 
     private GameObject _currentPrefab; // объект, необходимый для корректного удаления префабов со сцены
     protected GameObject _stack;
@@ -22,6 +24,8 @@ public class GardenBedController : Player
 
     private void Awake()
     {
+        Hint.SetActive(false);
+
         _isOverGrown = true;
         _isHaveNoGardenBed = true;
         _canPlant = false;
@@ -67,7 +71,9 @@ public class GardenBedController : Player
                 }
                 else if (_isReady)
                 {
-                    Debug.LogWarning($"HANDS ARE BUSY BY {instance.ItemInHands.name}");
+                    Debug.Log($"HANDS ARE BUSY BY {instance.ItemInHands.name}");
+                    Hint.GetComponent<Text>().text = "Ваши руки заняты";
+                    Hint.SetActive(true);
                 }
             }
             else if (_isReady) // урожай готов к сборке
@@ -100,7 +106,7 @@ public class GardenBedController : Player
     {
         // вылетает стог сена
         _stack = Instantiate(StackPrefab, transform);
-        _stack.transform.position = transform.position + new Vector3(2, 0, -4);
+        _stack.transform.position = transform.position + new Vector3(2, 0, -3.5f);
         _stack.transform.rotation = Quaternion.Euler(-90, 0, 0);
         _stack.tag = "Stack";
     }
@@ -109,20 +115,27 @@ public class GardenBedController : Player
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.LogWarning($"PLAYER TAKE {this.name}");
+            Debug.Log($"PLAYER TAKE {this.name}");
 
             if (instance.ItemInHands != null) // в руках что-то есть
             {
-                Debug.LogWarning("HANDS ARE BUSY");
+                Debug.Log("HANDS ARE BUSY");
+                Hint.GetComponent<Text>().text = "Ваши руки заняты";
+                Hint.SetActive(true);
             }
             else // руки свободны
             {
-                Debug.LogWarning("TAKE STACK TO PLAYER");
-
+                Debug.Log("TAKE STACK TO PLAYER");
+                Hint.SetActive(false);
                 //instance.ItemInHands = _stack;
                 Destroy(_stack);
             }
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Hint.SetActive(false);
     }
 
     private void OnDrawGizmos()

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,11 +6,21 @@ public class GameManager : Player
 {
     public GameObject FinishUI;
     public GameObject NotReadyYetUI;
+    public GameObject HintsUI;
 
     private void Awake()
     {
         FinishUI.SetActive(false);
         NotReadyYetUI.SetActive(false);
+        HintsUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToMainMenu();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,8 +50,17 @@ public class GameManager : Player
 
     public void ToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
-        SceneManager.UnloadScene("SampleScene");
+        SceneManager.LoadScene("MainMenu"); 
+    }
+
+    public void HintsOn()
+    {
+        HintsUI.SetActive(true);
+    }
+
+    public void HintsOff()
+    {
+        HintsUI.SetActive(false);
     }
 
     private void OnDrawGizmos()
