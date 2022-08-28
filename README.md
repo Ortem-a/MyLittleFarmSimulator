@@ -9,5 +9,5 @@
  LShift - Бег
  
 ## Скриншоты
-![Скриншот](https://github.com/Ortem-a/MyLittleFarmSimulator/raw/main/ForRepositoryDecorations/screenshot_1.png)
-![Скриншот](https://github.com/Ortem-a/MyLittleFarmSimulator/raw/main/ForRepositoryDecorations/screenshot_2.png)
+![Скриншот](https://github.com/Ortem-a/MyLittleFarmSimulator/raw/main/ForRepositoryDecorations/Screenshot_1.png)
+![Скриншот](https://github.com/Ortem-a/MyLittleFarmSimulator/raw/main/ForRepositoryDecorations/Screenshot_2.png)
